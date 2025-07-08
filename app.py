@@ -14,18 +14,15 @@ with open("scaler.pkl", "rb") as f:
 # Konfigurasi Halaman
 st.set_page_config(page_title="Prediksi Emisi CO₂ Kendaraan", layout="centered")
 st.title("🚗 Prediksi Emisi Karbon Dioksida (CO₂)")
-st.markdown("Masukkan spesifikasi kendaraan Anda untuk memprediksi **emisi CO₂ (gram/km)**.")
+st.markdown("Pilih spesifikasi kendaraan Anda untuk memprediksi **emisi CO₂ (gram/km)**.")
 
 # ------------------------------
-# Input User (Fitur dengan nama Indonesia)
-engine_size = st.number_input("🔧 Ukuran Mesin (Liter)", min_value=0.0, step=0.1, format="%.1f")
-cylinders = st.number_input("⚙️ Jumlah Silinder", min_value=1, step=1)
-fuel_city = st.number_input("🏙️ Konsumsi BBM Kota (L/100 km)", min_value=0.0, step=0.1,
-                            help="Fuel Consumption (City)")
-fuel_hwy = st.number_input("🛣️ Konsumsi BBM Tol (L/100 km)", min_value=0.0, step=0.1,
-                           help="Fuel Consumption (Hwy)")
-fuel_comb = st.number_input("🔄 Konsumsi BBM Kombinasi (L/100 km)", min_value=0.0, step=0.1,
-                            help="Fuel Consumption (Comb)")
+# Input User dengan SLIDER
+engine_size = st.slider("🔧 Ukuran Mesin (Liter)", min_value=0.5, max_value=10.0, value=2.0, step=0.1)
+cylinders = st.slider("⚙️ Jumlah Silinder", min_value=2, max_value=16, value=4, step=1)
+fuel_city = st.slider("🏙️ Konsumsi BBM Kota (L/100 km)", min_value=1.0, max_value=30.0, value=10.0, step=0.1)
+fuel_hwy = st.slider("🛣️ Konsumsi BBM Tol (L/100 km)", min_value=1.0, max_value=25.0, value=7.0, step=0.1)
+fuel_comb = st.slider("🔄 Konsumsi BBM Kombinasi (L/100 km)", min_value=1.0, max_value=28.0, value=8.5, step=0.1)
 
 # ------------------------------
 # Prediksi
